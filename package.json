@@ -1,6 +1,6 @@
 {
   "name": "gulp-ast",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "gulp js AST transformations",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,7 @@
     "url": "https://github.com/andyscott/gulp-ast"
   },
   "keywords": [
+    "gulpplugin",
     "gulp",
     "ast"
   ],
