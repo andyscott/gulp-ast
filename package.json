@@ -1,0 +1,29 @@
+{
+  "name": "gulp-ast",
+  "version": "0.0.1",
+  "description": "gulp js AST transformations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andyscott/gulp-ast"
+  },
+  "keywords": [
+    "gulp",
+    "ast"
+  ],
+  "author": "Andy Scott (https://github.com/andyscott/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andyscott/gulp-ast/issues"
+  },
+  "homepage": "https://github.com/andyscott/gulp-ast",
+  "devDependencies": {
+    "gulp": "~3.5.5",
+    "gulp-coffee": "~1.4.1",
+    "gulp-util": "~2.2.14",
+    "coffee-script": "~1.7.1"
+  }
+}
