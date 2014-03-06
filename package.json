@@ -1,6 +1,6 @@
 {
   "name": "gulp-ast",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "gulp js AST transformations",
   "main": "index.js",
   "scripts": {
