@@ -8,19 +8,33 @@ through2 = require('through2');
 
 exports.parse = function() {
   return through2.obj(function(file, encoding, cb) {
-    file.ast = esprima.parse(String(file.contents));
-    this.push(file);
+    var err;
+    try {
+      file.ast = esprima.parse(String(file.contents));
+      this.push(file);
+    } catch (_error) {
+      err = _error;
+      this.emit('error', new Error(err));
+    }
     return cb();
   });
 };
 
 exports.render = function() {
   return through2.obj(function(file, encoding, cb) {
-    if (file.ast != null) {
-      file.contents = new Buffer(escodegen.generate(file.ast));
-      delete file.ast;
+    var err;
+    if (file.ast == null) {
+      this.push(file);
+    } else {
+      try {
+        file.contents = new Buffer(escodegen.generate(file.ast));
+        delete file.ast;
+        this.push(file);
+      } catch (_error) {
+        err = _error;
+        this.emit(err);
+      }
     }
-    this.push(file);
     return cb();
   });
 };

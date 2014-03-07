@@ -6,15 +6,22 @@ esprima   = require 'esprima'
 through2  = require 'through2'
 
 exports.parse = -> through2.obj (file, encoding, cb) ->
-  file.ast = esprima.parse String(file.contents)
-  @push file
+  try
+    file.ast = esprima.parse String(file.contents)
+    @push file
+  catch err
+    @emit 'error', new Error(err)
   cb()
 
 exports.render = -> through2.obj (file, encoding, cb) ->
-  if file.ast?
-    file.contents = new Buffer(escodegen.generate file.ast)
-    delete file.ast
-  @push file
+  if not file.ast? then @push file
+  else
+    try
+      file.contents = new Buffer(escodegen.generate file.ast)
+      delete file.ast
+      @push file
+    catch err
+      @emit err
   cb()
 
 exports.transform = transform = (f) ->
