@@ -22,7 +22,7 @@ gulp.task('default', function() {
     .pipe(coffee({bare: true}).on('error', gutil.log))
     .pipe(gulp.dest('.'))
     .pipe(outFilter.restore())
-    .pipe(mocha())
+    .pipe(mocha({reporter: 'nyan'}))
     .on("error", function(err) {
       gutil.log(err.toString());
       this.emit('end');
